@@ -34,7 +34,7 @@ LSTM를 활용한 모델 생성 코드는 아래와 같다.
 ### ***Data Preprocessing***
 
 1) 학습/테스트 데이터 분할
-~~~
+```python
 import pandas as pd
 import random
 import matplotlib.pyplot as plt
@@ -52,14 +52,13 @@ df = df[::-1]
 train_size = int(len(df)*0.7)
 train_set = df[0:train_size]  
 test_set = df[train_size-seq_length:]
-
-~~~
+```
 
 
 2) 데이터 스케일링
 
 사용되는 설명변수들의 크기가 서로 다르므로 각 컬럼을 0-1 사이의 값으로 스케일링 한다. 
-~~~
+```python
 # Input scale
 scaler_x = MinMaxScaler()
 scaler_x.fit(train_set.iloc[:, :-1])
@@ -73,13 +72,13 @@ scaler_y.fit(train_set.iloc[:, [-1]])
 
 train_set.iloc[:, -1] = scaler_y.transform(train_set.iloc[:, [-1]])
 test_set.iloc[:, -1] = scaler_y.transform(test_set.iloc[:, [-1]])
-~~~
+```
 
 3) 데이터셋 생성 및 tensor 형태로 변환
 
 **파이토치에서는 3D 텐서의 입력을 받으므로 torch.FloatTensor를 사용하여 np.arrary 형태에서 tensor 형태로 바꿔준다.** 파이토치에서는 데이터를 좀 더 쉽게 다룰 수 있도록 유용한 도구로서 데이터셋(Dataset)과 데이터로더(DataLoader)를 제공하는데 이를 사용하면 미니 배치 학습, 데이터 셔플, 병렬 처리 등 간단히 수행할 수 있다. 기본적인 사용 방법은 Dataset을 정의하고 이를 DataLoader에 전달하는 것이다.  
 
-~~~
+```python
 from torch.utils.data import TensorDataset # 텐서데이터셋
 from torch.utils.data import DataLoader # 데이터로더
 
@@ -114,13 +113,13 @@ dataloader = DataLoader(dataset,
                         batch_size=batch,
                         shuffle=True,  
                         drop_last=True)
-~~~
+```
 
 
 ### ***LSTM***
 입력 컬럼은 5개, output 형태는 1개이며 hidden_state는 10개, 학습률은 0.01 등 임의 지정하였다.  LSTM 구조를 정의한 Net 클래스에서는 **__init__** 생성자를 통해 layer를 초기화하고 **forward** 함수를 통해 실행한다. **reset_hidden_state** 은 학습시 seq별로 hidden state를 초기화 하는 함수로 학습시 이전 seq의 영향을 받지 않게 하기 위함이다. 
 
-~~~
+```python
 # 설정값
 data_dim = 5
 hidden_dim = 10 
@@ -153,7 +152,7 @@ class Net(nn.Module):
         x, _status = self.lstm(x)
         x = self.fc(x[:, -1])
         return x
-~~~
+```
 
 ### ***Training***
 데이터셋과 알고리즘의 구조를 정의하였다면 실제로 학습이 수행될 함수를 정의한다. **verbose**는 epoch를 해당 verbose번째 마다 출력하기 위함이고, **patience**는 train loss를 patience만큼 이전 손실값과 비교해 줄어들지 않으면 학습을 종료시킬 때 사용한다. 
@@ -164,7 +163,7 @@ class Net(nn.Module):
 
 마지막으로 출력에서는 **model.eval()** 을 사용하였는데 evaluation 과정에서 사용되지 말아야할 layer들을 알아서 꺼주는 함수다. 
 
-~~~
+```python
 def train_model(model, train_df, num_epochs = None, lr = None, verbose = 10, patience = 10):
      
     criterion = nn.MSELoss().to(device)
@@ -213,21 +212,21 @@ def train_model(model, train_df, num_epochs = None, lr = None, verbose = 10, pat
                 break
             
     return model.eval(), train_hist
-~~~
+```
 
-~~~
+```python
 # 모델 학습
 net = Net(data_dim, hidden_dim, seq_length, output_dim, 1).to(device)  
 model, train_hist = train_model(net, dataloader, num_epochs = nb_epochs, lr = learning_rate, verbose = 20, patience = 10)
-~~~
+```
 
-~~~
+```python
 # epoch별 손실값
 fig = plt.figure(figsize=(10, 4))
 plt.plot(train_hist, label="Training loss")
 plt.legend()
 plt.show()
-~~~
+```
 
 ![img3](https://user-images.githubusercontent.com/50131912/160830286-02541c32-bb66-49d6-99a8-ef6c2761253a.png)
 
@@ -237,7 +236,7 @@ pythorch는 .pt 또는 .pth 파일 확장자로 모델을 저장한다. 추론�
 
 또한 모델을 불러 온 후에는 반드시 model.eval() 를 호출하여 드롭아웃 및 배치 정규화를 평가모드로 설정하도록 한다. **평가모드를 사용하지 않고 테스트를 하게 되면 추론 결과가 일관성없게 추론된다.**
 
-~~~
+```python
 # 모델 저장    
 PATH = "./Timeseries_LSTM_data-02-stock_daily_.pth"
 torch.save(model.state_dict(), PATH)
@@ -246,13 +245,13 @@ torch.save(model.state_dict(), PATH)
 model = Net(data_dim, hidden_dim, seq_length, output_dim, 1).to(device)  
 model.load_state_dict(torch.load(PATH), strict=False)
 model.eval()
-~~~
+```
 
 
 ### ***Evaluation***
 마지막으로 테스트 데이터셋에 대한 검증을 한다. torch.no_grad() 함수를 사용하면 gradient 계산을 수행하지 않게 되어 메모리 사용량을 아껴준다고 한다. **또한 예측시에도 새로운 seq가 입력될 때마다 hidden_state를 초기화해야 이전 seq의 영향을 받지 않는다고 한다.**
 
-~~~
+```python
 # 예측 테스트
 with torch.no_grad(): 
     pred = []
@@ -272,17 +271,17 @@ def MAE(true, pred):
     return np.mean(np.abs(true-pred))
 
 print('MAE SCORE : ', MAE(pred_inverse, testY_inverse))
-~~~
+```
 
 MAE 지표를 사용하여 모델의 성능을 측정한 결과 Inverse한 값 기준으로 10.3값이 나왔고, 아래 그림에서는 예측값을 Inverse해서 실제값과 비교하였다. 
 
-~~~
+```python
 fig = plt.figure(figsize=(8,3))
 plt.plot(np.arange(len(pred_inverse)), pred_inverse, label = 'pred')
 plt.plot(np.arange(len(testY_inverse)), testY_inverse, label = 'true')
 plt.title("Loss plot")
 plt.show()
-~~~
+```
 
 ![img4](https://user-images.githubusercontent.com/50131912/160830442-e1cb868e-1034-495f-9fbb-de3429bd3505.png)
 
