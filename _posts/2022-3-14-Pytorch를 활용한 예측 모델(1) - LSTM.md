@@ -34,25 +34,7 @@ LSTM를 활용한 모델 생성 코드는 아래와 같다.
 ### ***Data Preprocessing***
 
 1) 학습/테스트 데이터 분할
-```python
-import pandas as pd
-import random
-import matplotlib.pyplot as plt
-from sklearn.preprocessing import MinMaxScaler
-
-# 데이터 불러오기
-df = pd.read_csv('./data-02-stock_daily.csv')
-
-# 7일간의 데이터가 입력으로 들어가고 batch size는 임의로 지정
-seq_length = 7
-batch = 100
-
-# 데이터를 역순으로 정렬하여 전체 데이터의 70% 학습, 30% 테스트에 사용
-df = df[::-1]  
-train_size = int(len(df)*0.7)
-train_set = df[0:train_size]  
-test_set = df[train_size-seq_length:]
-```
+<script src="https://gist.github.com/717eunhye/0da9569cd90a710d237f72b1681db768.js"></script>
 
 
 2) 데이터 스케일링
