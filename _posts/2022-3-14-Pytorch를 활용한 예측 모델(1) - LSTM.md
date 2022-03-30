@@ -13,14 +13,15 @@ title: Pytorch를 활용한 예측 모델(1) - LSTM
 주식을 예측하기 위해 사용할 수 있는 데이터는 시가, 종가 등 5개의 컬럼이며 이를 **Input dimension**이라고 부른다.
 이전 7일의 정보를 활용하여 그 다음 종가를 예측하므로 **Sequence = 7, Output dimension = 1**이다. 
 
-![img1](C:/Users/EunHye/OneDrive/바탕 화면/eunhye_git/gitblog/Pytorch를 활용한 예측 모델(1)-LSTM/img1.png?raw=true)
+![img1](https://user-images.githubusercontent.com/50131912/160829970-0b1c83b1-7ae5-45a6-b5c2-1b1b76c77061.png)
+
 
 
 ## **LSTM**
 ---
 바닐라 RNN은 비교적 짧은 시퀀스에 대해서만 효과를 보이는 단점이 있어 뒤로 갈수록 맨 처음의 정보량은 손실되고 영향력은 거의 의미가 없을 수도 있게 된다. 
 
-![img2](C:/Users/EunHye/OneDrive/바탕 화면/eunhye_git/gitblog/Pytorch를 활용한 예측 모델(1)-LSTM/img2.png?raw=true)
+![img2](https://user-images.githubusercontent.com/50131912/160830145-0966cf80-09bd-4ead-b8cd-1eb170a38650.png)
 
 RNN으로 만든 언어 모델이 다음 단어를 예측하는 과정을 생각해보자. 예를 들어 "모스크바에 여행을 왔는데 건물도 예브고 먹을 것도 맛있었어. 그런데 글쎄 직장 상사한테 전화가 왔어. 어디냐고 묻더라구 그래서 나는 말했지. 저 여행왔는데요. 여기____" 다음 단어를 예측하기 위해서는 장소 정보가 필요하다. 그런데 장소 정보에 해당되는 단어인 '모스크바'는 앞에 위치하고 있고, RNN이 충분한 기억력을 가지고 있지 못한다면 다음 단어를 엉뚱하게 예측한다. 이를 **장기 의존성 문제**라고 한다. 
 
@@ -228,7 +229,8 @@ plt.legend()
 plt.show()
 ~~~
 
-![img3](C:/Users/EunHye/OneDrive/바탕 화면/eunhye_git/gitblog/Pytorch를 활용한 예측 모델(1)-LSTM/img3.png?raw=true)
+![img3](https://user-images.githubusercontent.com/50131912/160830286-02541c32-bb66-49d6-99a8-ef6c2761253a.png)
+
 
 ### ***Model Save & Load***
 pythorch는 .pt 또는 .pth 파일 확장자로 모델을 저장한다. 추론을 위해 모델을 저장할 때는 학습된 모델의 매개변수만 저장하면 되는데 torch 사용하여 모델의 state_dict을 저장하는 것이 나중에 모델을 사용할 때 가장 유연하게 사용할 수 있는 모델 저장시 권장하는 방법이라고 한다. 
@@ -282,7 +284,9 @@ plt.title("Loss plot")
 plt.show()
 ~~~
 
-![img4](C:/Users/EunHye/OneDrive/바탕 화면/eunhye_git/gitblog/Pytorch를 활용한 예측 모델(1)-LSTM/img4.png?raw=true)
+![img4](https://user-images.githubusercontent.com/50131912/160830442-e1cb868e-1034-495f-9fbb-de3429bd3505.png)
+
+
 
 **참고**
 
