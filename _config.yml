@@ -4,15 +4,11 @@
 
 # Name of your site (displayed in the header)
 name: Euuuune
-=======
 
->>>>>>> 5738c463001093f2c7926ce81cb0e3f4bf08fd71
 # Short bio or description (displayed in the header)
 description: Data Scientist from Somewhere
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
-# avatar: https://raw.githubusercontent.com/barryclark/jekyll-now/master/images/jekyll-logo.png
-=======
 avatar: '/images/KakaoTalk_20220406_103212889.png'
 #
 # Flags below are optional
