@@ -31,14 +31,14 @@ line chart는 아래 두 줄 만으로도 차트가 그려진다.
 
 한 차트 프레임안에 두 개의 line을 그리는 경우는 plt.plot()을 추가해주면 된다.  
 차트를 구분하기 위해 라벨과 색상을 추가하였고, 범례부분의 옵션을 추가로 사용해보았다. 
-Matplotlib는 색상, 선크기, 선종류 등  다양하게 지원하므로 해당 문서를 참고하길 바란다. (https://wikidocs.net/92085)
+Matplotlib는 색상, 선크기, 선종류 등  다양하게 지원하므로 해당 문서를 [참고](https://wikidocs.net/92085)하길 바란다.
 
 ![image3](https://user-images.githubusercontent.com/50131912/163089381-c1ffe644-726f-4192-b3a2-b02d38712fad.png)
 
 
-- 라인색상 : plt.plot(x, y, label = 'y', color = 'red') 
+- 라인 색상 : plt.plot(x, y, label = 'y', color = 'red') 
 - 라인 종류 : linestyle='dashed'  
-- 범례종류 : plt.legend(ncol=1, fontsize = 12, frameon = True, shadow = True)  
+- 범례 종류 : plt.legend(ncol=1, fontsize = 12, frameon = True, shadow = True)  
 
 
 **linestyle 지정하기**
@@ -106,8 +106,10 @@ plt.axvline(), plt.vlines() 함수는 위의 수평선 함수와 사용법은 �
   
   
   
-  
-  
+
+
+
+    
 
 **Reference**
 

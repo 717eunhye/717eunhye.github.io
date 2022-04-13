@@ -89,10 +89,11 @@ MAE 지표를 사용하여 모델의 성능을 측정한 결과 Inverse한 값 �
 
 <script src="https://gist.github.com/717eunhye/679807f34d013b7fabc392924ce8d07d.js"></script>
 
-![img4](https://user-images.githubusercontent.com/50131912/160830442-e1cb868e-1034-495f-9fbb-de3429bd3505.png)
+![img4](https://user-images.githubusercontent.com/50131912/160830442-e1cb868e-1034-495f-9fbb-de3429bd3505.png)  
+  
 
 
-
+  
 **Reference**
 
 [WIKIDOCS](https://wikidocs.net/60690)
