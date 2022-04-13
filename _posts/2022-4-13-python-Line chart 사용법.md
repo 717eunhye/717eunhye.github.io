@@ -16,13 +16,11 @@ line chart는 아래 두 줄 만으로도 차트가 그려진다.
 
 ![image2](https://user-images.githubusercontent.com/50131912/163089172-ac86716a-af60-4645-828c-aa47c02463c3.png)
 
->1)차트 크기 :  plt.figure(figsize=(max, min)) 
+ (1) 차트 크기 :  plt.figure(figsize=(max, min))  
+ (2) 범례 추가 : plt.plot(x, y, label = 'y') 안에 y값의 범례명을 적어 준 후 plt.legend() 함수 사용  
+ (3) 축 라벨링 : x축의 경우 plt.xlabel("x축명") , plt.ylabel("y축명")  
+ (4) 차트 제목 :  plt.title("차트명")  
 
->2)범례 추가 : plt.plot(x, y, label = 'y') 안에 y값의 범례명을 적어 준 후 plt.legend() 함수 사용
-
-3)축 라벨링 : x축의 경우 plt.xlabel("x축명") , plt.ylabel("y축명") 
-
-4)차트 제목 :  plt.title("차트명")
 
 축라벨과 차트 제목 크기를 변경하고 싶다면 fontsize 옵션을 사용하면 된다.
 
