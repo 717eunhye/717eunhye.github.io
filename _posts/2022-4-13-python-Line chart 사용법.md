@@ -106,11 +106,7 @@ plt.axvline(), plt.vlines() 함수는 위의 수평선 함수와 사용법은 �
   
   
   
-
-
-
-    
-
+---
 **Reference**
 
 [matplotlib.org](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.legend.html),

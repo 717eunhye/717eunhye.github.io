@@ -93,10 +93,8 @@ MAE 지표를 사용하여 모델의 성능을 측정한 결과 Inverse한 값 �
   
 
 
-  
+ --- 
 **Reference**
 
-[WIKIDOCS](https://wikidocs.net/60690)
-
-[na_young_1124-BLOG](https://blog.naver.com/PostView.nhn?blogId=na_young_1124&logNo=222281343807&parentCategoryNo=&categoryNo=33&viewDate=&isShowPopularPosts=true&from=search )
+[WIKIDOCS](https://wikidocs.net/60690),  [na_young_1124-BLOG](https://blog.naver.com/PostView.nhn?blogId=na_young_1124&logNo=222281343807&parentCategoryNo=&categoryNo=33&viewDate=&isShowPopularPosts=true&from=search )
 
