@@ -1,6 +1,6 @@
 ---
 layout: post
-title: python-Line chart 사용법
+title: Python-Line chart 사용법
 ---
 본 포스팅은 line chart를 활용하여 주로 사용했던 방법과 옵션을 정리하였다. 
 
