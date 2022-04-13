@@ -17,20 +17,10 @@ line chart는 아래 두 줄 만으로도 차트가 그려진다.
 ![image2](https://user-images.githubusercontent.com/50131912/163089172-ac86716a-af60-4645-828c-aa47c02463c3.png)
 
 
-1) 차트 크기 :  plt.figure(figsize=(max, min))  
-2) 범례 추가 : plt.plot(x, y, label = 'y') 안에 y값의 범례명을 적어 준 후 plt.legend() 함수 사용  
-3) 축 라벨링 : x축의 경우 plt.xlabel("x축명") , plt.ylabel("y축명")  
-4) 차트 제목 :  plt.title("차트명")  
-{: .notice--primary} 
-
-
-
-```
- 1) 차트 크기 :  plt.figure(figsize=(max, min))  
- 2) 범례 추가 : plt.plot(x, y, label = 'y') 안에 y값의 범례명을 적어 준 후 plt.legend() 함수 사용  
- 3) 축 라벨링 : x축의 경우 plt.xlabel("x축명") , plt.ylabel("y축명")  
- 4) 차트 제목 :  plt.title("차트명")  
-```
+- 차트 크기 :  plt.figure(figsize=(max, min))  
+- 범례 추가 : plt.plot(x, y, label = 'y') 안에 y값의 범례명을 적어 준 후 plt.legend() 함수 사용  
+- 축 라벨링 : x축의 경우 plt.xlabel("x축명") , plt.ylabel("y축명")  
+- 차트 제목 :  plt.title("차트명")  
 
 축라벨과 차트 제목 크기를 변경하고 싶다면 fontsize 옵션을 사용하면 된다.
 
@@ -45,11 +35,11 @@ Matplotlib는 색상, 선크기, 선종류 등  다양하게 지원하므로 해
 
 ![image3](https://user-images.githubusercontent.com/50131912/163089381-c1ffe644-726f-4192-b3a2-b02d38712fad.png)
 
-```
- 1) 라인색상 : plt.plot(x, y, label = 'y', color = 'red') 
- 2) 라인 종류 : linestyle='dashed'  
- 3) 범례종류 : plt.legend(ncol=1, fontsize = 12, frameon = True, shadow = True)  
-```
+
+- 라인색상 : plt.plot(x, y, label = 'y', color = 'red') 
+- 라인 종류 : linestyle='dashed'  
+- 범례종류 : plt.legend(ncol=1, fontsize = 12, frameon = True, shadow = True)  
+
 
 **linestyle 지정하기**
 
@@ -95,10 +85,10 @@ plt.subplots()를 fig와 axes로 받고 첫번째 차트는 axes[0] , 두번째 
 ## **5. 수평/수직선 표시하기**
 
 수직, 수평선을 그리는 방법은 각 2가지씩 있다.  
-```
-수평선 : plt.axhline(y, xmin, xmax), plt.hlines(y, xmin, xmax)  
-수직선 : plt.axvline(x, ymin, ymax), plt.vlines(x, ymin, ymax)  
-```
+
+- 수평선 : plt.axhline(y, xmin, xmax), plt.hlines(y, xmin, xmax)  
+- 수직선 : plt.axvline(x, ymin, ymax), plt.vlines(x, ymin, ymax)  
+
 각 수평선, 수직선 함수의 차이를 비교해보도록 하자. 
 
 <script src="https://gist.github.com/717eunhye/e1c85dca518a848d8a0a892e942930b2.js"></script>
